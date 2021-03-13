@@ -7,18 +7,17 @@ function initMap() {
   });
 }
 
-// fetch('https://api.meetup.com/find/topics?query=tech&only=id,name')
-// .then(function (response) {
-//   if (response.ok) {
-//     console.log(response);
-//     response.json().then(function (data) {
-//       console.log(data);
-//       displayRepos(data, user);
-//     });
-//   } else {
-//     alert('Error: ' + response.statusText);
-//   }
-// })
-// .catch(function (error) {
-//   alert('Unable to connect to GitHub');
-// });
+fetch('https://cors-anywhere.herokuapp.com/https://api.meetup.com/find/topics?query=tech&only=id,name')
+.then(function (response) {
+  if (response.ok) {
+    console.log(response);
+    response.json().then(function (data) {
+      console.log(data);
+    });
+  } else {
+    alert('Error: ' + response.statusText);
+  }
+})
+.catch(function (error) {
+  alert('Unable to connect to GitHub');
+});
