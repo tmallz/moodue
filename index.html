@@ -7,21 +7,30 @@
     <title>Moodue</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='./Assets/CSS/reset.CSS'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='./Assets/CSS/styles.CSS'>
 
 </head>
 
 <body>
+    <nav class="nav-extended">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo center">moodue</a>
+        </div>
+        <div class="nav-content">
+            <ul class="tabs tabs-transparent">
+                <li class="tab"><a href="#test1">Mood</a></li>
+                <li class="tab"><a href="#test4">Filter</a></li>
+            </ul>
+        </div>
+    </nav>
+
     <div id="map"></div>
-    <p>welcome!</p>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD01bWvq3zIPfQyADfDXxQiOApTNm2OHwY&callback=initMap&libraries=&v=weekly"
         async></script>
-
-
-
     <script src='./Assets/Javascript/script.js'></script>
 </body>
 
