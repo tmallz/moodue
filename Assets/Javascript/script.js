@@ -1,3 +1,13 @@
+var eventContainerEl = document.querySelector('#PLACEHOLDER');
+var cardEl1 = document.querySelector('#card1');
+var cardEl2 = document.querySelector('#card2');
+var cardEl3 = document.querySelector('#card3');
+var cardEl4 = document.querySelector('#card4');
+var cardEl5 = document.querySelector('#card5');
+//store all the card elements in an array so we can itereate over them later
+var cardArray = [cardEl1, cardEl2, cardEl3, cardEl4, cardEl5];
+
+
 $(document).ready(function(){
   $('select').formSelect()
 })
@@ -16,6 +26,8 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.meetup.com/find/topics?qu
   if (response.ok) {
     console.log(response);
     response.json().then(function (data) {
+      displayEvents();
+
       console.log(data);
     });
   } else {
@@ -25,3 +37,12 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.meetup.com/find/topics?qu
 .catch(function (error) {
   alert('Unable to connect to GitHub');
 });
+
+function displayEvents(){
+  //loop over the card array to target each card and changes its display to inline from none.
+  for(i = 0; i<cardArray.length, i++){
+    cardArray[i].style.display = inline;
+  }
+
+
+}
