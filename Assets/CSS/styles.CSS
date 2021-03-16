@@ -24,6 +24,6 @@ nav {
 	background-color: var(--teal);
 }
 
-.nav-extended {
-	color:#010440;
-}
+/* .hidden {
+	display: none;
+} */
