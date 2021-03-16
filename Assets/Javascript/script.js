@@ -1,3 +1,8 @@
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(elems, options);
+});
+
 let map;
 
 function initMap() {
@@ -21,3 +26,14 @@ fetch('https://cors-anywhere.herokuapp.com/https://api.meetup.com/find/topics?qu
 .catch(function (error) {
   alert('Unable to connect to GitHub');
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('select');
+  var instances = M.FormSelect.init(elems, options);
+});
+
+// $(document).ready(function(){
+//   $('select').formSelect() {
+//     $('moodSelector').classList.toggle("show");
+//   }
+// });

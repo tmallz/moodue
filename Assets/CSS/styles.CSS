@@ -1,3 +1,11 @@
+:root {
+	--dkblue: #010326;
+	--mdblue: #010440;
+	--ltblue: #2291F2;
+	--teal: #44F2B2;
+	--gray: #F2F2F2;
+}
+
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 #map {
@@ -5,9 +13,17 @@
 }
 
 /* Optional: Makes the sample page fill the window. */
-html,
-body {
-	height: 100%;
+html, body {
+	height: 75%;
 	margin: 0;
 	padding: 0;
+	background-color: var(--mdblue);
+}
+
+nav {
+	background-color: var(--teal);
+}
+
+.nav-extended {
+	color:#010440;
 }
