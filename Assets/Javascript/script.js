@@ -1,3 +1,7 @@
+$(document).ready(function(){
+  $('select').formSelect()
+})
+
 let map;
 
 function initMap() {
