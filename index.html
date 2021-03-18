@@ -6,15 +6,79 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Moodue</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel='stylesheet' type='text/css' media='screen' href='./Assets/CSS/reset.CSS'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <link rel='stylesheet' type='text/css' media='screen' href='./Assets/CSS/styles.CSS'>
-    
+
 
 </head>
 
 <body>
+    <nav class="navbar navbar-light bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" id="brand-logo">moodue</a>
+            <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="What's you location?" aria-label="Search">
+                <input class="form-control me-2" type="search" placeholder="find" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            events
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">concerts</a></li>
+                            <li><a class="dropdown-item" href="#">play</a></li>
+                            <li><a class="dropdown-item" href="#">comedy</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            movies
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Netflix</a></li>
+                            <li><a class="dropdown-item" href="#">Prime Video</a></li>
+                            <li><a class="dropdown-item" href="#">HBOMAX</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            food
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">ubereats</a></li>
+                            <li><a class="dropdown-item" href="#">grubhub</a></li>
+                            <li><a class="dropdown-item" href="#">doordash</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="img">
+        <img src="concertpic.jpeg" alt="concert picture style=">
+    </div>
+
     <nav class="nav-extended">
         <div class="nav-wrapper">
             <a href="#" class="brand-logo center">moodue</a>
@@ -28,26 +92,27 @@
     </nav>
 
     <div id="map" class="container"></div>
-    <div class="input-field col s12">
+    <div class="input-field col s12 white text">
         <select>
             <option value="" disabled selected>Choose your mood</option>
             <option value="lively">Lively</option>
             <option value="mellow">Mellow</option>
             <option value="artsy">Artsy</option>
         </select>
-        <label>Mood</label>
+
+        <!-- <label>Mood</label> -->
     </div>
 
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD01bWvq3zIPfQyADfDXxQiOApTNm2OHwY&callback=initMap&libraries=&v=weekly"
         async></script>
-        <script src='./Assets/Javascript/script.js'></script>
-    
+    <script src='./Assets/Javascript/script.js'></script>
+
 </body>
 
 </html>
