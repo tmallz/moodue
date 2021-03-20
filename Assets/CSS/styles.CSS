@@ -13,12 +13,11 @@
 }
 
 /* Optional: Makes the sample page fill the window. */
-html,
-body {
-  /* height: 100vh; */
-  margin: 0;
-  padding: 0;
-  background-color: var(--mdblue);
+html, body {
+	/* height: 100vh; */
+	margin: 0;
+	padding: 0;
+	background-color: var(--mdblue);
 }
 
 /* nav bar style */
@@ -33,38 +32,46 @@ nav {
 
 /* added brand logo style */
 #brand-logo {
-  font-family: "Pacifico", cursive;
-  font-size: 60px;
-  color: rgb(253, 253, 253);
-  background-color: var(--teal);
-  height: 100px;
-  margin: 0;
-  padding-top: 15px;
+
+	font-family: 'Pacifico', cursive;
+	font-size: 60px;
+	color: rgb(253, 253, 253);
+	background-color: var(--teal);
+	height: 100px;
+	margin: 0;
+	padding-top: 15px;
 }
 
 /* concert img to fit page */
 img {
-  width: 100%;
-  height: auto;
-  z-index: 50;
+	width: 100%;
+	height: auto;
+	z-index: 50;
 }
 
 /* choose your mood container */
 #imgContainer {
-  position: relative;
+	position: relative;
 }
 
 /* mood text display */
 #moodText {
-  position: absolute;
-  color: white;
-  z-index: 100;
-  top: 20%;
-  text-align: center;
-  width: 100%;
-  line-height: 1.6;
-  font-weight: bold;
+	position: absolute;
+	color: white;
+	z-index: 100;
+	top: 20%;
+	text-align: center;
+	width: 100%;
+	line-height: 1.6;
+	font-weight: bold;
 }
+
+h4 {
+	background-color: (0, 0, 0, 0.5);
+}
+
+.hidden {
+	display: none;
 
 /* background */
 h4 {

@@ -11,9 +11,12 @@ var cTextEl1 = document.querySelector('#cText1');
 var cTextEl2 = document.querySelector('#cText2');
 var cTextEl3 = document.querySelector('#cText3');
 var cTextEl4 = document.querySelector('#cText4');
+var livleyButtonEl = document.querySelector('#livelyButton');
+var mellowButtonEl = document.querySelector('#mellowButton');
 //store all the card elements in an array so we can itereate over them later
 var cardArray = [cardEl1, cardEl2, cardEl3, cardEl4];
 var cardTitleArray = [cTitleEl1, cTitleEl2, cTitleEl3, cTitleEl4];
+var cardParArray = [cTextEl1, cTextEl2, cTextEl3, cTextEl4];
 var lat;
 var lon;
 var coordsCombined;
@@ -25,7 +28,7 @@ var mellowArray = [];
 $(document).ready(function(){
   $('select').formSelect()
 })
-
+// LOCATION RELEVANCE GOOGLE MAPS STUFF
 function getLocation() {
   if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(showPosition, areError);
@@ -42,63 +45,6 @@ function showPosition(position) {
   var searchUrl = getSearchUrl(lat + "," + lon); 
   makeEventFetch(searchUrl, position);
 }
-
-function areError(error){
-  if(error){
-    window.alert("An error has occrured");
-    return;
-  }
-}
-
-function getSearchUrl(coordParams){
-  //var currentSearch = 'https://app.ticketmaster.com/discovery/v2/events.json?&apikey=xXOSaYto3DEydI9ZpFXj78cQVnDGuiH3&latlon=' + coordParams;
-  //var currentSearch = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=pLOeuGq2JL05uEGrZG7DuGWu6sh2OnMz&latlong='+ coordParams;
-  var currentSearch = 'https://my.api.mockaroo.com/moodue_dummy_data.json?key=a6b46f00'
-  return currentSearch;
-}
-
-function displayEvents(dataParam){
-  //   for(i=0; i<) 
-}
-
-function setEventArrays(dataParam){
-  for(i = 0; i<dataParam.length; i++){
-    if(dataParam[i].Movie.genre == "Action" || "Adventure" || "Crime" || "Horror" || "Crime" || "War" || "Thiller"){
-      livelyArray[i] = dataParam[i].Movie;
-    }else{
-      mellowArray[i] = dataParam[i].Movie;
-    }
-  }
-}
-
-function makeEventFetch(searchUrlParam, position){
-  fetch(searchUrlParam)
-  .then(function (response) {
-    if (response.ok) {
-      console.log(response);
-      response.json().then(function (data) {
-        console.log(data);
-        displayEvents(data);
-        initMap(data);
-      });
-    } else {
-      alert('Error: ' + response.statusText);
-    }
-  })
-  .catch(function (error) {
-    alert('Unable to connect to TicketMaster');
-  });
-}
-
-
-function displayCards(){
-  //loop over the card array to target each card and changes its display to inline from none.
-  for(i = 0; i<cardArray.length; i++){
-    cardArray[i].style.display = 'inline';
-  }
-}
-
-//let map;
 
 function initMap(dataParam) {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -119,15 +65,98 @@ function addMarker(map, data) {
   marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
   console.log(marker);
 }
-  
+
+// ---------------------
+// render functions
+function displayEvents(moodParam){
+  if (moodParam === "lively"){
+    for(i=0; i<cardTitleArray.length; i++){
+      cardTitleArray[i].textContent = livelyArray[i].title;
+      cardParArray[i].textContent = livelyArray[i].genre;
+    } 
+  }else{
+    cardTitleArray[i].textContent = mellowArray[i].title;
+    cardParArray[i].textContent = mellowArray[i].genre;
+  }
+}
+function displayCards(){
+  //loop over the card array to target each card and changes its display to inline from none.
+  for(i = 0; i<cardArray.length; i++){
+    cardArray[i].style.display = 'inline';
+  }
+}
+// ----------------------
+// EVENT STUFF
+function setEventArrays(dataParam){
+  console.log('setEventArrays has been invoked');
+  console.log(dataParam)
+  const livelyThruFilter = dataParam.filter(object => {
+    var genreArrayFromData = object.Movie.genre.split('|');
+    return genreArrayFromData.includes("Action" || "Adventure" || "Crime" || "Horror" || "War" || "Thriller")
+  });
+  console.log(livelyThruFilter);
+  const mellowThruFilter = dataParam.filter(object => {
+    var genreArrayFromData = object.Movie.genre.split('|');
+    return !genreArrayFromData.includes("Action" || "Adventure" || "Crime" || "Horror" || "War" || "Thriller");
+  })
+  console.log(mellowThruFilter);
+  livelyArray = livelyThruFilter;
+  mellowArray = mellowThruFilter;
+    //"Adventure|Animation|Children|Musical" => split '|' => ['adventure', 'animation', ...].includes("Action" || "Adventure" || "Crime" || "Horror" || "Crime" || "War" || "Thiller") => return tru or false which is good for filter
+}
+function makeEventFetch(searchUrlParam){
+  fetch(searchUrlParam)
+  .then(function (response) {
+    if (response.ok) {
+      console.log(response);
+      response.json().then(function (data) {
+        console.log(data);
+        setEventArrays(data);
+        displayEvents(data);
+        initMap(data);
+        //return data;
+      });
+    } else {
+      alert('Error: ' + response.statusText);
+    }
+  })
+  .catch(function (error) {
+    alert('Unable to connect to TicketMaster');
+  });
+}
+
+// helpers and error handlers
+function areError(error){
+  if(error){
+    window.alert("An error has occrured");
+    return;
+  }
+}
+
+function moodFinder(){
+  var mood;
+  if(livleyButtonEl.checked){
+    mood = "lively";
+  }else if (mellowButtonEl.checked){
+    mood = "mellow";
+  }
+  return mood;
+}
+
+function getSearchUrl(coordParams){
+  //var currentSearch = 'https://app.ticketmaster.com/discovery/v2/events.json?&apikey=xXOSaYto3DEydI9ZpFXj78cQVnDGuiH3&latlon=' + coordParams;
+  //var currentSearch = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=pLOeuGq2JL05uEGrZG7DuGWu6sh2OnMz&latlong='+ coordParams;
+  var currentSearch = 'https://my.api.mockaroo.com/moodue_dummy_data.json?key=a6b46f00'
+  return currentSearch;
+}
+ 
 var handleButtonClick = function(event){
   event.preventDefault();
   var mood = moodFinder(event);
-  makeEventFetch();
   displayCards();
+  loadMap();
 }
 
 getLocation();
 
 eventContainerEl.addEventListener('click', handleButtonClick);
-//moods/events
