@@ -19,98 +19,43 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" id="brand-logo">moodue</a>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="What's you location?" aria-label="Search">
-                <input class="form-control me-2" type="search" placeholder="find" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarNavDarkDropdown" aria-controls="navbarNavDarkDropdown" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            events
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">concerts</a></li>
-                            <li><a class="dropdown-item" href="#">play</a></li>
-                            <li><a class="dropdown-item" href="#">comedy</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            movies
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">Netflix</a></li>
-                            <li><a class="dropdown-item" href="#">Prime Video</a></li>
-                            <li><a class="dropdown-item" href="#">HBOMAX</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            food
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                            <li><a class="dropdown-item" href="#">ubereats</a></li>
-                            <li><a class="dropdown-item" href="#">grubhub</a></li>
-                            <li><a class="dropdown-item" href="#">doordash</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <div class="img">
-        <img src="/Assets/CSS/concertpic.jpeg" alt="concert picture style=">
+    <header>
+        <h2 id="brand-logo" class="text-center align-middle">moodue</h2>
+    </header>
+
+    <div id="imgContainer">
+        <h4 id="moodText" class="text-center align-middle">Choose Your Mood <br> Find Your Venue</h4>
+        <img src="concertpic.jpeg" alt="concert picture style=">
     </div>
 
-    <nav class="nav-extended">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo center">moodue</a>
-        </div>
-        <!-- <div class="nav-content">
-            <ul class="tabs tabs-transparent">
-                <li class="tab"><a href="#test1">Mood</a></li>
-                <li class="tab"><a href="#test4">Filter</a></li>
-            </ul>
-        </div> -->
-    </nav>
-
-    <div id="map" class="container"></div>
-
-    <div class="input-field col s12 white text">
-        <select>
-            <option value="" disabled selected>Choose your mood</option>
-            <option value="lively">Lively</option>
-            <option value="mellow">Mellow</option>
-            <option value="artsy">Artsy</option>
-        </select>
-
-
-        <!--         <label class="moodLabel">Mood</label>
+    <div class="selectContainer container center-align">
+        <form action="#" class="center-align">
+            <p>
+                <label>
+                    <input class="with-gap radio-btn" name="group1" type="radio" checked />
+                    <span>Lively</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input class="with-gap radio-btn" name="group1" type="radio" />
+                    <span>Mellow</span>
+                </label>
+            </p>
+        </form>
     </div>
-    <div class="row container hidden">
-        <div class="col s12">
+    <div class="container">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Choose</button>
+    </div>
+
+
+    </div>
+    <div class="row container hidden" id = "card1">
+        <div class="col s12" >
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
-                    <span class="card-title">Card Title</span>
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
+                    <span class="card-title" id = "cardTitle1">Card Title</span>
+                    <p id = "cText1"></p>
                     <div>
                         <div class="card-action">
                             <a href="#">This is a link</a>
@@ -120,13 +65,12 @@
             </div>
         </div>
     </div>
-    <div class="row container hidden">
+    <div class="row container hidden" id = "card2">
         <div class="col s12">
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
-                    <span class="card-title">Card Title</span>
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
+                    <span class="card-title" id = "cardTitle2">Card Title</span>
+                    <p id = "cText2"></p>
                     <div>
                         <div class="card-action">
                             <a href="#">This is a link</a>
@@ -136,13 +80,12 @@
             </div>
         </div>
     </div>
-    <div class="row container hidden">
+    <div class="row container hidden" id = "card3">
         <div class="col s12">
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
-                    <span class="card-title">Card Title</span>
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
+                    <span class="card-title" id = "cardTitle3">Card Title</span>
+                    <p id = "cText3"></p>
                     <div>
                         <div class="card-action">
                             <a href="#">This is a link</a>
@@ -152,13 +95,12 @@
             </div>
         </div>
     </div>
-    <div class="row container hidden">
+    <div class="row container hidden" id = "card4">
         <div class="col s12">
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
-                    <span class="card-title">Card Title</span>
-                    <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
+                    <span class="card-title" id = "cardTitle4">Card Title</span>
+                    <p id = "cText4"></p>
                     <div>
                         <div class="card-action">
                             <a href="#">This is a link</a>
@@ -167,7 +109,7 @@
                 </div>
             </div>
         </div>
- -->
+
     </div>
 
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
@@ -176,7 +118,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD01bWvq3zIPfQyADfDXxQiOApTNm2OHwY&callback=initMap&libraries=&v=weekly"
-        async></script>
+        async defer></script>
     <script src='./Assets/Javascript/script.js'></script>
 
     <!--         async>
