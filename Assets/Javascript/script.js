@@ -57,8 +57,8 @@ function getSearchUrl(coordParams){
   return currentSearch;
 }
 
-function displayEvents(){
-  for(i=0; i<)
+function displayEvents(dataParam){
+  //   for(i=0; i<) 
 }
 
 function setEventArrays(dataParam){
@@ -69,8 +69,6 @@ function setEventArrays(dataParam){
       mellowArray[i] = dataParam[i].Movie;
     }
   }
-  console.log("lively", livelyArray);
-  console.log("Mellow", mellowArray);
 }
 
 function makeEventFetch(searchUrlParam, position){
@@ -124,6 +122,8 @@ function addMarker(map, data) {
   
 var handleButtonClick = function(event){
   event.preventDefault();
+  var mood = moodFinder(event);
+  makeEventFetch();
   displayCards();
 }
 
