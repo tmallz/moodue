@@ -19,46 +19,36 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" id="brand-logo">moodue</a>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="What's you location?" aria-label="Search">
-                <input class="form-control me-2" type="search" placeholder="find" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-        </div>
-    </nav>
-    <div class="container">
-        <img src="concertpic.jpeg" alt="concert picture">
-        <div class="center">What is your mood?</div>
-        <button type="button" class="btn btn-danger center" id="button">choose</button>
+    <header>
+        <h2 id="brand-logo" class="text-center align-middle">moodue</h2>
+    </header>
+
+    <div id="imgContainer">
+        <h4 id="moodText" class="text-center align-middle">Choose Your Mood <br> Find Your Venue</h4>
+        <img src="concertpic.jpeg" alt="concert picture style=">
     </div>
 
-    <!-- <nav class="nav-extended">
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo center">moodue</a>
-        </div> -->
-    <!-- <div class="nav-content">
-            <ul class="tabs tabs-transparent">
-                <li class="tab"><a href="#test1">Mood</a></li>
-                <li class="tab"><a href="#test4">Filter</a></li>
-            </ul>
-        </div> -->
-    </nav>
-
-    <div id="map" class="container"></div>
-
-    <div class="input-field col s12 white text" id = "mood-selector">
-        <select>
-            <option value="" disabled selected>Choose your mood</option>
-            <option value="lively">Lively</option>
-            <option value="mellow">Mellow</option>
-            <option value="artsy">Artsy</option>
-        </select>
+    <div class="selectContainer container center-align">
+        <form action="#" class="center-align">
+            <p>
+                <label>
+                    <input class="with-gap radio-btn" name="group1" type="radio" checked />
+                    <span>Lively</span>
+                </label>
+            </p>
+            <p>
+                <label>
+                    <input class="with-gap radio-btn" name="group1" type="radio" />
+                    <span>Mellow</span>
+                </label>
+            </p>
+        </form>
+    </div>
+    <div class="container">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Choose</button>
+    </div>
 
 
-           
     </div>
     <div class="row container hidden" id = "card1">
         <div class="col s12" >
