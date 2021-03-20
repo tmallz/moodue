@@ -15,12 +15,10 @@
 /* Optional: Makes the sample page fill the window. */
 html,
 body {
-
-  /* height: 100vh; */
-  margin: 0;
-  padding: 0;
-  background-color: var(--mdblue);
-
+	/* height: 100vh; */
+	margin: 0;
+	padding: 0;
+	background-color: var(--mdblue);
 }
 
 nav {
@@ -32,43 +30,45 @@ nav {
 }
 
 #brand-logo {
-
-  font-family: "Pacifico", cursive;
-  font-size: 60px;
-  color: rgb(253, 253, 253);
-  background-color: var(--teal);
-  height: 100px;
-  margin: 0;
-  padding-top: 15px;
+	font-family: 'Pacifico', cursive;
+	font-size: 60px;
+	color: rgb(253, 253, 253);
+	background-color: var(--teal);
+	height: 100px;
+	margin: 0;
+	padding-top: 15px;
 }
 
 img {
-  width: 100%;
-  height: auto;
-  z-index: 50;
+	width: 100%;
+	height: auto;
+	z-index: 50;
 }
 
 #imgContainer {
-  position: relative;
+	position: relative;
 }
 
 #moodText {
-  position: absolute;
-  color: white;
-  z-index: 100;
-  top: 20%;
-  text-align: center;
-  width: 100%;
-  line-height: 1.6;
-  font-weight: bold;
+	position: absolute;
+	color: white;
+	z-index: 100;
+	top: 20%;
+	text-align: center;
+	width: 100%;
+	line-height: 1.6;
+	font-weight: bold;
 }
 
 label {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 h4 {
-  background-color: (0, 0, 0, 0.5);
+	background-color: (0, 0, 0, 0.5);
+}
 
+.hidden {
+	display: none;
 }
