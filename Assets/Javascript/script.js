@@ -1,14 +1,25 @@
-var eventContainerEl = document.querySelector('#PLACEHOLDER');
+var eventContainerEl = document.querySelector('#mood-selector');
 var cardEl1 = document.querySelector('#card1');
 var cardEl2 = document.querySelector('#card2');
 var cardEl3 = document.querySelector('#card3');
 var cardEl4 = document.querySelector('#card4');
-var cardEl5 = document.querySelector('#card5');
+var cTitleEl1 = document.querySelector('#cardTitle1');
+var cTitleEl2 = document.querySelector('#cardTitle2');
+var cTitleEl3 = document.querySelector('#cardTitle3');
+var cTitleEl4 = document.querySelector('#cardTitle4');
+var cTextEl1 = document.querySelector('#cText1');
+var cTextEl2 = document.querySelector('#cText2');
+var cTextEl3 = document.querySelector('#cText3');
+var cTextEl4 = document.querySelector('#cText4');
 //store all the card elements in an array so we can itereate over them later
-var cardArray = [cardEl1, cardEl2, cardEl3, cardEl4, cardEl5];
+var cardArray = [cardEl1, cardEl2, cardEl3, cardEl4];
+var cardTitleArray = [cTitleEl1, cTitleEl2, cTitleEl3, cTitleEl4];
 var lat;
 var lon;
 var coordsCombined;
+var globalData;
+var livelyArray = [];
+var mellowArray = [];
 
 
 $(document).ready(function(){
@@ -40,8 +51,26 @@ function areError(error){
 }
 
 function getSearchUrl(coordParams){
-  var currentSearch = 'https://app.ticketmaster.com/discovery/v2/events.json?&apikey=xXOSaYto3DEydI9ZpFXj78cQVnDGuiH3&latlon=' + coordParams;
+  //var currentSearch = 'https://app.ticketmaster.com/discovery/v2/events.json?&apikey=xXOSaYto3DEydI9ZpFXj78cQVnDGuiH3&latlon=' + coordParams;
+  //var currentSearch = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=pLOeuGq2JL05uEGrZG7DuGWu6sh2OnMz&latlong='+ coordParams;
+  var currentSearch = 'https://my.api.mockaroo.com/moodue_dummy_data.json?key=a6b46f00'
   return currentSearch;
+}
+
+function displayEvents(){
+  for(i=0; i<)
+}
+
+function setEventArrays(dataParam){
+  for(i = 0; i<dataParam.length; i++){
+    if(dataParam[i].Movie.genre == "Action" || "Adventure" || "Crime" || "Horror" || "Crime" || "War" || "Thiller"){
+      livelyArray[i] = dataParam[i].Movie;
+    }else{
+      mellowArray[i] = dataParam[i].Movie;
+    }
+  }
+  console.log("lively", livelyArray);
+  console.log("Mellow", mellowArray);
 }
 
 function makeEventFetch(searchUrlParam, position){
@@ -51,52 +80,54 @@ function makeEventFetch(searchUrlParam, position){
       console.log(response);
       response.json().then(function (data) {
         console.log(data);
-        initMap(position, data);
+        displayEvents(data);
+        initMap(data);
       });
     } else {
       alert('Error: ' + response.statusText);
     }
   })
   .catch(function (error) {
-    alert('Unable to connect to GitHub');
+    alert('Unable to connect to TicketMaster');
   });
 }
 
 
-function displayEvents(){
+function displayCards(){
   //loop over the card array to target each card and changes its display to inline from none.
   for(i = 0; i<cardArray.length; i++){
-    cardArray[i].style.display = inline;
+    cardArray[i].style.display = 'inline';
   }
-
-
 }
 
-let map;
+//let map;
 
-function initMap(position, data) {
+function initMap(dataParam) {
   map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: lat, lng: lon },
     zoom: 12,
   });
-  for(i=0; i<data.page.size; i++){}
+  for(i=0; i<dataParam.length; i++){
+    addMarker(map, dataParam[i].event);
+  }
 }
 
-
-
-function addMarker(map, event) {
+function addMarker(map, data) {
+  var latlon = data.event.lat + ',' + data.event.lon;
   var marker = new google.maps.Marker({
-    position: new google.maps.LatLng(event._embedded.venues[0].location.latitude, event._embedded.venues[0].location.longitude),
+    position: latlon, //new google.maps.LatLng(event.event.lat, event.event.lon),
     map: map
   });
   marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
   console.log(marker);
-  }
+}
   
-
+var handleButtonClick = function(event){
+  event.preventDefault();
+  displayCards();
+}
 
 getLocation();
 
+eventContainerEl.addEventListener('click', handleButtonClick);
 //moods/events
-
-//Happy: converts
