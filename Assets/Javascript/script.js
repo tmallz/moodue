@@ -11,9 +11,12 @@ var cTextEl1 = document.querySelector('#cText1');
 var cTextEl2 = document.querySelector('#cText2');
 var cTextEl3 = document.querySelector('#cText3');
 var cTextEl4 = document.querySelector('#cText4');
+var livleyButtonEl = document.querySelector('#livelyButton');
+var mellowButtonEl = document.querySelector('#mellowButton');
 //store all the card elements in an array so we can itereate over them later
 var cardArray = [cardEl1, cardEl2, cardEl3, cardEl4];
 var cardTitleArray = [cTitleEl1, cTitleEl2, cTitleEl3, cTitleEl4];
+var cardParArray = [cTextEl1, cTextEl2, cTextEl3, cTextEl4];
 var lat;
 var lon;
 var coordsCombined;
@@ -57,13 +60,32 @@ function getSearchUrl(coordParams){
   return currentSearch;
 }
 
-function displayEvents(dataParam){
-  //   for(i=0; i<) 
+function displayEvents(moodParam){
+  if (moodParam === "lively"){
+    for(i=0; i<cardTitleArray.length; i++){
+      cardTitleArray[i].textContent = livelyArray[i].title;
+      cardParArray[i].textContent = livelyArray[i].genre;
+    } 
+  }else{
+    cardTitleArray[i].textContent = mellowArray[i].title;
+    cardParArray[i].textContent = mellowArray[i].genre;
+  }
+
+}
+
+function moodFinder(){
+  var mood;
+  if(livleyButtonEl.checked){
+    mood = "lively";
+  }else if (mellowButtonEl.checked){
+    mood = "mellow";
+  }
+  return mood;
 }
 
 function setEventArrays(dataParam){
   for(i = 0; i<dataParam.length; i++){
-    if(dataParam[i].Movie.genre == "Action" || "Adventure" || "Crime" || "Horror" || "Crime" || "War" || "Thiller"){
+    if(dataParam[i].Movie.genre === "Action" || "Adventure" || "Crime" || "Horror" || "Crime" || "War" || "Thiller"){
       livelyArray[i] = dataParam[i].Movie;
     }else{
       mellowArray[i] = dataParam[i].Movie;
@@ -71,15 +93,17 @@ function setEventArrays(dataParam){
   }
 }
 
-function makeEventFetch(searchUrlParam, position){
+function makeEventFetch(searchUrlParam){
   fetch(searchUrlParam)
   .then(function (response) {
     if (response.ok) {
       console.log(response);
       response.json().then(function (data) {
         console.log(data);
-        displayEvents(data);
+        setEventArrays(data);
+        displayEvents(data,livelyArray, mellowArray);
         initMap(data);
+        //return data;
       });
     } else {
       alert('Error: ' + response.statusText);
@@ -123,8 +147,9 @@ function addMarker(map, data) {
 var handleButtonClick = function(event){
   event.preventDefault();
   var mood = moodFinder(event);
-  makeEventFetch();
+  displayEvents(mood);
   displayCards();
+  loadMap();
 }
 
 getLocation();
