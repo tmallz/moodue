@@ -1,35 +1,38 @@
 :root {
-  --dkblue: #010326;
-  --mdblue: #010440;
-  --ltblue: #2291f2;
-  --teal: #44f2b2;
-  --gray: #f2f2f2;
+	--dkblue: #010326;
+	--mdblue: #010440;
+	--ltblue: #2291f2;
+	--teal: #44f2b2;
+	--gray: #f2f2f2;
 }
 
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 #map {
-  height: 100%;
+	height: 100%;
 }
 
 /* Optional: Makes the sample page fill the window. */
 html,
 body {
+
   /* height: 100vh; */
   margin: 0;
   padding: 0;
   background-color: var(--mdblue);
+
 }
 
 nav {
-  background-color: var(--teal);
+	background-color: var(--teal);
 }
 
 .nav-extended {
-  color: #010440;
+	color: #010440;
 }
 
 #brand-logo {
+
   font-family: "Pacifico", cursive;
   font-size: 60px;
   color: rgb(253, 253, 253);
@@ -67,42 +70,5 @@ label {
 
 h4 {
   background-color: (0, 0, 0, 0.5);
-}
 
-<<<<<<< HEAD
-.btn-large {
-  position: absolute;
-  z-index: 150;
-}
-
-.selectContainer {
-  display: flex;
-  margin-top: 20px;
-}
-
-.radio-btn {
-  height: 200%;
-}
-
-p {
-  display: inline-block;
-}
-/* #moodueNav {
-  background-color: var(--teal);
-  height: 100px;
-  margin: 0;
-} */
-
-/* .navbar-collapse {
-  background-color: var(--mdblue);
-} */
-=======
-/* Centered text */
-.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 40px;
 }
