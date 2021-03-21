@@ -114,7 +114,9 @@ function makeEventFetch(searchUrlParam){
       response.json().then(function (data) {
         console.log(data);
         setEventArrays(data);
+
         //displayEvents(data);
+
         initMap(data);
         //return data;
       });
@@ -158,7 +160,7 @@ var handleButtonClick = function(event){
   var mood = moodFinder(event);
   displayEvents(mood);
   displayCards();
-  loadMap();
+ // loadMap();
 }
 
 getLocation();
