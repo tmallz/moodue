@@ -114,6 +114,9 @@ function makeEventFetch(searchUrlParam){
       response.json().then(function (data) {
         console.log(data);
         setEventArrays(data);
+
+        //displayEvents(data);
+
         initMap(data);
         //return data;
       });
