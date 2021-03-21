@@ -1,92 +1,94 @@
 :root {
-  --dkblue: #010326;
-  --mdblue: #010440;
-  --ltblue: #2291f2;
-  --teal: #44f2b2;
-  --gray: #f2f2f2;
+	--dkblue: #010326;
+	--mdblue: #010440;
+	--ltblue: #2291f2;
+	--teal: #44f2b2;
+	--gray: #f2f2f2;
 }
 
 /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
 #map {
-  height: 100%;
+	margin-top: 100px;
+	height: 700px;
 }
 
 /* makes the sample page fill the window. */
 html,
 body {
-  margin: 0;
-  padding: 0;
-  background-color: var(--mdblue);
+	margin: 0;
+	padding: 0;
+	background-color: var(--mdblue);
 }
 
 /* header section */
 nav {
-  background-color: var(--teal);
+	background-color: var(--teal);
 }
 
 #brand-logo {
-  font-family: "Pacifico", cursive;
-  font-size: 60px;
-  color: rgb(253, 253, 253);
-  background-color: var(--teal);
-  height: 100px;
-  margin: 0;
-  padding-top: 15px;
+	font-family: 'Pacifico', cursive;
+	font-size: 60px;
+	color: rgb(253, 253, 253);
+	background-color: var(--teal);
+	height: 100px;
+	margin: 0;
+	padding-top: 15px;
 }
 
 #moodText {
-  position: absolute;
-  color: white;
-  z-index: 100;
-  text-align: center;
-  width: 100%;
-  line-height: 1.6;
-  font-weight: bold;
+	position: absolute;
+	color: white;
+	z-index: 100;
+	text-align: center;
+	width: 100%;
+	line-height: 1.6;
+	font-weight: bold;
 }
 
-#moodText, span {
-  font-family: "Poppins", sans-serif;
+#moodText,
+span {
+	font-family: 'Poppins', sans-serif;
 }
 
 /* radio buttons */
 .selectContainer {
-  margin-top: 20px;
-  position: relative;
+	margin-top: 20px;
+	position: relative;
 }
 
 form {
-  position: absolute;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 300px;
-  left: 0;
-  right: 0;
-  text-align: center;
+	position: absolute;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	left: 0;
+	right: 0;
+	text-align: center;
 }
 
 p {
-  display: inline-block;
+	display: inline-block;
 }
 
 /* button */
 .btn {
-  background-color: var(--teal);
-  color: gray;
-  font-weight: bold;
-  margin-top: 270px;
+	background-color: var(--teal);
+	color: gray;
+	font-weight: bold;
+	margin-top: 0px;
 }
 
 .btnContainer {
-  margin-top: 70px;
+	margin-top: 70px;
 }
 
 /* results screen */
 .card {
-  background-color: var(--ltblue);
-  color: gray;
+	background-color: var(--ltblue);
+	color: gray;
 }
 
 .hidden {
-  display: none;
+	display: none;
 }
