@@ -35,22 +35,10 @@ nav {
   padding-top: 15px;
 }
 
-/* image section */
-img {
-  width: 100%;
-  height: auto;
-  z-index: 50;
-}
-
-#imgContainer {
-  position: relative;
-}
-
 #moodText {
   position: absolute;
   color: white;
   z-index: 100;
-  top: 20%;
   text-align: center;
   width: 100%;
   line-height: 1.6;
@@ -71,6 +59,7 @@ form {
   position: absolute;
   margin-left: auto;
   margin-right: auto;
+  margin-top: 300px;
   left: 0;
   right: 0;
   text-align: center;
@@ -85,6 +74,7 @@ p {
   background-color: var(--teal);
   color: gray;
   font-weight: bold;
+  margin-top: 270px;
 }
 
 .btnContainer {
