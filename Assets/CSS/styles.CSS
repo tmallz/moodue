@@ -10,7 +10,7 @@
        * element that contains the map. */
 #map {
 	margin-top: 100px;
-	height: 700px;
+	height: 300px;
 }
 
 /* makes the sample page fill the window. */
@@ -51,7 +51,7 @@ span {
 	font-family: 'Poppins', sans-serif;
 }
 
-/* radio buttons */
+/* radio button */
 .selectContainer {
 	margin-top: 20px;
 	position: relative;
