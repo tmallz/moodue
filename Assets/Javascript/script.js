@@ -51,55 +51,57 @@ function initMap(dataParam) {
     center: { lat: lat, lng: lon },
     zoom: 12,
   });
-  for(i=0; i<dataParam.length; i++){
-    addMarker(map, dataParam[i].event);
-  }
 }
+//   for(i=0; i<dataParam.length; i++){
+//     addMarker(map, dataParam[i].event);
+//   }
+// }
 
-function addMarker(map, data) {
-  var latlon = data.event.lat + ',' + data.event.lon;
-  var marker = new google.maps.Marker({
-    position: latlon, //new google.maps.LatLng(event.event.lat, event.event.lon),
-    map: map
-  });
-  marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
-  console.log(marker);
-}
+// function addMarker(map, data) {
+//   var latlon = data.event.lat + ',' + data.event.lon;
+//   var marker = new google.maps.Marker({
+//     position: latlon, //new google.maps.LatLng(event.event.lat, event.event.lon),
+//     map: map
+//   });
+//   marker.setIcon('http://maps.google.com/mapfiles/ms/icons/red-dot.png');
+//   console.log(marker);
+// }
 
 // ---------------------
 // render functions
 function displayEvents(moodParam){
   if (moodParam === "lively"){
-    for(i=0; i<cardTitleArray.length; i++){
-      cardTitleArray[i].textContent = livelyArray[i].title;
-      cardParArray[i].textContent = livelyArray[i].genre;
+    for(i=0; i<livelyArray.length; i++){
+      cardTitleArray[i].textContent = livelyArray[i].Movie.title;
+      cardParArray[i].textContent = livelyArray[i].Movie.genre;
     } 
   }else{
-    cardTitleArray[i].textContent = mellowArray[i].title;
-    cardParArray[i].textContent = mellowArray[i].genre;
+    for(i=0; i<mellowArray.length; i++){
+      cardTitleArray[i].textContent = mellowArray[i].Movie.title;
+      cardParArray[i].textContent = mellowArray[i].Movie.genre;   
+    }
   }
 }
 function displayCards(){
   //loop over the card array to target each card and changes its display to inline from none.
-  for(i = 0; i<cardArray.length; i++){
-    cardArray[i].style.display = 'inline';
+  for(var i = 0; i<cardArray.length; i++){
+    cardArray[i].style.display = 'block';
   }
 }
+function loadMap(){
+
+} 
 // ----------------------
 // EVENT STUFF
 function setEventArrays(dataParam){
-  console.log('setEventArrays has been invoked');
-  console.log(dataParam)
   const livelyThruFilter = dataParam.filter(object => {
     var genreArrayFromData = object.Movie.genre.split('|');
     return genreArrayFromData.includes("Action" || "Adventure" || "Crime" || "Horror" || "War" || "Thriller")
   });
-  console.log(livelyThruFilter);
   const mellowThruFilter = dataParam.filter(object => {
     var genreArrayFromData = object.Movie.genre.split('|');
     return !genreArrayFromData.includes("Action" || "Adventure" || "Crime" || "Horror" || "War" || "Thriller");
   })
-  console.log(mellowThruFilter);
   livelyArray = livelyThruFilter;
   mellowArray = mellowThruFilter;
     //"Adventure|Animation|Children|Musical" => split '|' => ['adventure', 'animation', ...].includes("Action" || "Adventure" || "Crime" || "Horror" || "Crime" || "War" || "Thiller") => return tru or false which is good for filter
@@ -112,7 +114,7 @@ function makeEventFetch(searchUrlParam){
       response.json().then(function (data) {
         console.log(data);
         setEventArrays(data);
-        displayEvents(data);
+        //displayEvents(data);
         initMap(data);
         //return data;
       });
@@ -147,12 +149,14 @@ function getSearchUrl(coordParams){
   //var currentSearch = 'https://app.ticketmaster.com/discovery/v2/events.json?&apikey=xXOSaYto3DEydI9ZpFXj78cQVnDGuiH3&latlon=' + coordParams;
   //var currentSearch = 'https://app.ticketmaster.com/discovery/v2/events.json?apikey=pLOeuGq2JL05uEGrZG7DuGWu6sh2OnMz&latlong='+ coordParams;
   var currentSearch = 'https://my.api.mockaroo.com/moodue_dummy_data.json?key=a6b46f00'
+  //var currentSearch = "./data/moodueDummyData.json"
   return currentSearch;
 }
  
 var handleButtonClick = function(event){
   event.preventDefault();
   var mood = moodFinder(event);
+  displayEvents(mood);
   displayCards();
   loadMap();
 }
